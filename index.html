@@ -20,25 +20,83 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Cinematic Hero Section with Video Background -->
     <section class="hero">
+        <!-- Video Background Container -->
+        <div class="video-background">
+            <!-- Video 1: Cracks of Gold -->
+            <div class="video-container active" data-video-index="0">
+                <iframe
+                    src="https://www.youtube.com/embed/Vgay7j6dPdA?autoplay=1&mute=1&controls=0&loop=1&playlist=Vgay7j6dPdA&playsinline=1&showinfo=0&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <!-- Video 2: What's the Cost -->
+            <div class="video-container" data-video-index="1">
+                <iframe
+                    src="https://www.youtube.com/embed/afqBZtJuJ7U?autoplay=1&mute=1&controls=0&loop=1&playlist=afqBZtJuJ7U&playsinline=1&showinfo=0&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <!-- Video 3: One in a Million -->
+            <div class="video-container" data-video-index="2">
+                <iframe
+                    src="https://www.youtube.com/embed/YBOon0Lwc7U?autoplay=1&mute=1&controls=0&loop=1&playlist=YBOon0Lwc7U&playsinline=1&showinfo=0&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <!-- Video 4: The Void I Kill -->
+            <div class="video-container" data-video-index="3">
+                <iframe
+                    src="https://www.youtube.com/embed/ZTqznibf7LA?autoplay=1&mute=1&controls=0&loop=1&playlist=ZTqznibf7LA&playsinline=1&showinfo=0&rel=0&modestbranding=1"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Hero Content -->
         <div class="hero-content">
+            <div class="logo-glow"></div>
             <h1 class="hero-title">
-                <span class="title-line">Pick</span>
-                <span class="title-line">Formula</span>
+                <span class="title-line">PICKFORMULA</span>
             </h1>
-            <p class="hero-subtitle">Where data meets sound.</p>
+            <p class="hero-subtitle">Where Data Meets Sound.</p>
             <p class="hero-description">
-                PickFormula is a creative house uniting music, production, and storytelling.<br>
-                Home to <span class="highlight">Cracked Pavement Records</span> and <span class="highlight">South London Diaries</span> —
-                where art meets precision, and sound meets soul.
+                Home of <span class="highlight">Cracked Pavement Records</span> & <span class="highlight">South London Diaries</span>.
             </p>
+            <div class="hero-buttons">
+                <a href="https://open.spotify.com/artist/3Nwa0VuaHLpqDNRkyQ8D3m?si=jhuR77wfT_GUtGRXITTU3A" target="_blank" rel="noopener noreferrer" class="hero-btn">
+                    <span class="btn-icon">▶</span> Listen on Spotify
+                </a>
+                <a href="https://www.youtube.com/@SouthLondonDiaries" target="_blank" rel="noopener noreferrer" class="hero-btn">
+                    <span class="btn-icon">▶</span> Watch on YouTube
+                </a>
+            </div>
+
+            <!-- Video Indicators -->
+            <div class="video-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+                <span class="indicator" data-index="3"></span>
+            </div>
+
             <div class="hero-scroll">
                 <span>Scroll to explore</span>
                 <div class="scroll-indicator"></div>
             </div>
         </div>
-        <div class="hero-overlay"></div>
     </section>
 
     <!-- Music Section -->
