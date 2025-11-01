@@ -99,7 +99,7 @@ After deployment, verify:
 
 For Vercel support: [vercel.com/support](https://vercel.com/support)
 
-For site issues: hello@pickformula.com
+For site issues: pickformula@gmail.com
 
 ---
 
