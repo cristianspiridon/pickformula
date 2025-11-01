@@ -93,7 +93,7 @@ All releases are available on major streaming platforms via Ditto.fm:
 
 ## Contact
 
-For inquiries: hello@pickformula.com
+For inquiries: pickformula@gmail.com
 
 ---
 

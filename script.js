@@ -238,7 +238,7 @@ window.addEventListener('scroll', updateActiveNavLink, { passive: true });
 console.log('%cPICKFORMULA', 'font-size: 3rem; font-weight: bold; background: linear-gradient(135deg, #ffffff 0%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
 console.log('%cWhere Data Meets Sound.', 'font-size: 1.2rem; color: #D4AF37; font-weight: bold;');
 console.log('%c🎬 Cinematic experience powered by PickFormula', 'font-size: 0.9rem; color: #999;');
-console.log('%cInterested in working with us? → hello@pickformula.com', 'font-size: 0.9rem; color: #D4AF37;');
+console.log('%cInterested in working with us? → pickformula@gmail.com', 'font-size: 0.9rem; color: #D4AF37;');
 
 // ================================
 // PERFORMANCE OPTIMIZATION
