@@ -1,0 +1,19 @@
+{
+  "name": "pickformula",
+  "version": "1.0.0",
+  "description": "PickFormula - A creative house uniting music, production, and storytelling",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "preview": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "pickformula",
+    "cracked-pavement-records",
+    "south-london-diaries",
+    "music",
+    "production"
+  ],
+  "author": "PickFormula Ltd",
+  "license": "UNLICENSED"
+}
