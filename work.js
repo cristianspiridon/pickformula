@@ -12,6 +12,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         if (href === '#') {
             e.preventDefault();
+            // Track navigation to top
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation('top');
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
@@ -21,6 +25,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             e.preventDefault();
             const navHeight = document.querySelector('.nav').offsetHeight;
             const targetPosition = target.offsetTop - navHeight;
+
+            // Track navigation
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation(href.substring(1));
+            }
 
             window.scrollTo({
                 top: targetPosition,
@@ -60,6 +69,11 @@ function openContactModal() {
     const modal = document.getElementById('contactModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Track modal open
+    if (typeof AnalyticsTracker !== 'undefined') {
+        AnalyticsTracker.trackModalOpen('custom_track_request');
+    }
 }
 
 function closeContactModal() {
@@ -131,6 +145,11 @@ const modalForm = document.getElementById('modalForm');
 if (modalForm) {
     modalForm.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Track form submission
+        if (typeof AnalyticsTracker !== 'undefined') {
+            AnalyticsTracker.trackFormSubmission('custom_track_request_modal');
+        }
 
         // Get form data
         const formInputs = this.querySelectorAll('input, select, textarea');
@@ -245,9 +264,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial active nav state
     updateActiveNavLink();
+
+    // Track catalog item clicks
+    document.querySelectorAll('.catalog-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const itemName = this.querySelector('.catalog-title')?.textContent || 'Unknown Item';
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackCatalogView(itemName);
+            }
+        });
+
+        // Track play button clicks within catalog items
+        const playBtn = item.querySelector('.play-btn');
+        if (playBtn) {
+            playBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const itemName = item.querySelector('.catalog-title')?.textContent || 'Unknown Item';
+                if (typeof AnalyticsTracker !== 'undefined') {
+                    AnalyticsTracker.trackButtonClick(`play_${itemName}`, 'catalog');
+                }
+            });
+        }
+
+        // Track link button clicks (Spotify, YouTube)
+        item.querySelectorAll('.link-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const itemName = item.querySelector('.catalog-title')?.textContent || 'Unknown Item';
+                const platform = this.textContent.trim();
+                const href = this.getAttribute('href');
+                if (typeof AnalyticsTracker !== 'undefined') {
+                    AnalyticsTracker.trackExternalLink(`${platform} - ${itemName}`, href);
+                }
+            });
+        });
+    });
+
+    // Track hero CTA button
+    document.querySelectorAll('.hero-cta').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackButtonClick(buttonText, 'hero_cta');
+            }
+        });
+    });
+
+    // Track collaboration buttons
+    document.querySelectorAll('.collab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackButtonClick(buttonText, 'collaboration');
+            }
+        });
+    });
+
+    // Track contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function() {
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackFormSubmission('work_contact_form');
+            }
+        });
+    }
+
+    // Track home navigation link
+    document.querySelectorAll('.nav-links a[href="index.html"], .logo').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation('home_page');
+            }
+        });
+    });
 });
 
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+
+    // Track page view
+    if (typeof AnalyticsTracker !== 'undefined') {
+        AnalyticsTracker.trackPageView('Work Page');
+    }
+
     console.log('✓ All assets loaded');
 });

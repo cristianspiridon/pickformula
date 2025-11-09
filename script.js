@@ -21,6 +21,10 @@ class VideoRotator {
         // Set up indicator click events
         this.indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
+                // Track video indicator click
+                if (typeof AnalyticsTracker !== 'undefined') {
+                    AnalyticsTracker.trackButtonClick(`video_indicator_${index + 1}`, 'hero_video');
+                }
                 this.switchToVideo(index);
                 this.resetRotationTimer();
             });
@@ -80,6 +84,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         // Skip if it's just "#"
         if (href === '#') {
             e.preventDefault();
+            // Track navigation to top
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation('home');
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
@@ -89,6 +97,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             e.preventDefault();
             const navHeight = document.querySelector('.nav').offsetHeight;
             const targetPosition = target.offsetTop - navHeight;
+
+            // Track navigation
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation(href.substring(1));
+            }
 
             window.scrollTo({
                 top: targetPosition,
@@ -331,6 +344,11 @@ window.addEventListener('load', () => {
     updateHeroParallax();
     updateNavBackground();
 
+    // Track page view
+    if (typeof AnalyticsTracker !== 'undefined') {
+        AnalyticsTracker.trackPageView('Home Page');
+    }
+
     console.log('✓ PickFormula website loaded successfully');
 });
 
@@ -342,6 +360,48 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+
+    // Track hero button clicks
+    document.querySelectorAll('.hero-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            const href = this.getAttribute('href');
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackExternalLink(buttonText, href);
+            }
+        });
+    });
+
+    // Track release card clicks
+    document.querySelectorAll('.release-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const releaseName = this.querySelector('.release-title')?.textContent || 'Unknown Release';
+            const href = this.getAttribute('href');
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackReleaseClick(releaseName);
+                AnalyticsTracker.trackExternalLink(`Release: ${releaseName}`, href);
+            }
+        });
+    });
+
+    // Track contact email click
+    document.querySelectorAll('.contact-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const contactType = this.querySelector('.contact-label')?.textContent || 'Contact';
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackButtonClick(`contact_${contactType.toLowerCase()}`, 'contact');
+            }
+        });
+    });
+
+    // Track "Work" navigation link
+    document.querySelectorAll('.nav-links a[href="work.html"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof AnalyticsTracker !== 'undefined') {
+                AnalyticsTracker.trackNavigation('work_page');
+            }
+        });
+    });
 
     console.log('✓ DOM ready - All systems initialized');
 });
