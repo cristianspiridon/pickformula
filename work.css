@@ -756,36 +756,163 @@ a {
     color: var(--color-gray);
 }
 
-.footer-socials {
+/* Footer Main Section */
+.footer-main {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
     gap: 2rem;
 }
 
+.footer-brand {
+    flex: 1;
+}
+
+.footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+}
+
+.footer-tagline {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+/* Social Links Section */
+.footer-socials {
+    flex: 1;
+    text-align: right;
+}
+
+.footer-social-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold-dim);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+.social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
 .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     color: var(--color-gray);
     font-size: 0.95rem;
-    transition: var(--transition-fast);
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.5rem 0;
 }
 
-.social-link:hover {
-    color: var(--color-gold);
+.social-link svg {
+    width: 22px;
+    height: 22px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
 }
 
-.footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-gray-dark);
+.social-link span {
+    line-height: 1;
+    position: relative;
+}
+
+.social-link span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover span::after {
+    width: 100%;
+}
+
+/* YouTube Brand Color */
+.social-link.youtube:hover {
+    color: #FF0000;
+}
+
+.social-link.youtube:hover svg {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Spotify Brand Color */
+.social-link.spotify:hover {
+    color: #1DB954;
+}
+
+.social-link.spotify:hover svg {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.social-separator {
+    color: var(--color-gray-dark);
+    font-size: 0.85rem;
+    opacity: 0.5;
+}
+
+/* Footer Divider */
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(212, 175, 55, 0.15) 20%,
+        rgba(212, 175, 55, 0.15) 80%,
+        transparent 100%
+    );
+    margin: 1.5rem 0;
+}
+
+/* Creator Credits */
+.footer-credits {
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.footer-bottom p {
-    font-size: 0.9rem;
+.footer-creator {
+    font-size: 0.85rem;
+    color: var(--color-gold);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    font-style: italic;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.05);
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
     color: var(--color-gray);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
+    font-weight: 300;
 }
 
 .footer-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--color-gold-dim);
+    font-weight: 300;
+    letter-spacing: 0.05em;
 }
 
 /* ================================
@@ -831,13 +958,31 @@ a {
         padding: 2rem 1.5rem;
     }
 
-    .footer-content {
+    .footer-main {
         flex-direction: column;
+        text-align: center;
+        gap: 2rem;
     }
 
     .footer-socials {
-        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-social-label {
+        margin-bottom: 0.75rem;
+    }
+
+    .social-links {
+        justify-content: center;
         gap: 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1.6rem;
+    }
+
+    .footer-creator {
+        font-size: 0.85rem;
     }
 }
 
